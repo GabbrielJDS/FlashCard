@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flash Card</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #ADD8E6; /* Azul claro */
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+
+  .flashcard {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    max-width: 80%;
+  }
+
+  button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+  }
+
+  button:active {
+    background-color: #3e8e41;
+    transform: scale(0.9);
+  }
+
+  .icon {
+    margin-right: 5px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="flashcard" id="flashcard-text">Aqui vai a frase do flash card</div>
+  <button id="anterior"><i class="fas fa-arrow-left icon"></i>Anterior</button>
+  <button id="proximo"><i class="fas fa-arrow-right icon"></i>Próximo</button>
+  <button id="comecar"><i class="fas fa-play icon"></i>Começar</button>
+  <button id="sair"><i class="fas fa-sign-out-alt icon"></i>Sair</button>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Função para obter o flashcard com o índice
+    function getFlashCard(indice) {
+      // Simulação do flashcard com texto
+      const flashCardText = [
+        "Frase 1 do flashcard",
+        "Frase 2 do flashcard",
+        "Frase 3 do flashcard",
+        "Frase 4 do flashcard"
+      ];
+
+      // Verifica se o índice está dentro do limite
+      if (indice >= 0 && indice < flashCardText.length) {
+        document.getElementById('flashcard-text').innerText = flashCardText[indice];
+      } else {
+        console.error('Índice do flashcard fora do intervalo.');
+      }
+    }
+
+    // Obter referências aos botões
+    const anteriorBtn = document.getElementById('anterior');
+    const proximoBtn = document.getElementById('proximo');
+    const comecarBtn = document.getElementById('comecar');
+    const sairBtn = document.getElementById('sair');
+
+    // Adicionar eventos aos botões
+    anteriorBtn.onclick = function () {
+      // Chama o método getFlashCard com o índice anterior
+      getFlashCard(0); // Coloque o índice desejado aqui
+    };
+
+    proximoBtn.onclick = function () {
+      // Chama o método getFlashCard com o índice próximo
+      getFlashCard(1); // Coloque o índice desejado aqui
+    };
+
+    comecarBtn.onclick = function () {
+      // Chama o método getFlashCard com o índice inicial
+      getFlashCard(0);
+    };
+
+    sairBtn.onclick = function () {
+      // Adicione o código para sair aqui
+      console.log('Botão Sair clicado.');
+    };
+  });
+</script>
+<script src="script.js"></script>
+</body>
+</html>
+
